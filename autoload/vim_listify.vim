@@ -12,11 +12,10 @@ python parentdir = os.path.dirname(currentdir)
 python sys.path.insert(0,parentdir)
 
 " --------------------------------
-"  Function(s)
+"  Function
 " --------------------------------
-function! Listify(selection_or_buffer, order)
+function! vim_listify#Listify(selection_or_buffer, order)
 python << endPython
-from vim_listify import *
 
 def listify(buffer_type, order_type):
     if buffer_type == "buffer":
@@ -25,7 +24,7 @@ def listify(buffer_type, order_type):
                 vim.current.buffer[count] = str(count+1)+'. ' + vim.current.buffer[count]
         else:
             for count in xrange(len(vim.current.buffer)):
-                vim.current.buffer[count] = '*. ' + vim.current.buffer[count]
+                vim.current.buffer[count] = '* ' + vim.current.buffer[count]
     elif buffer_type == "selection":
         buf   = vim.current.buffer # the buffer
         start = buf.mark('<')[0]-1      # start selection tuple: (1,5)
