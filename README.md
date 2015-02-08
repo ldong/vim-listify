@@ -24,11 +24,19 @@ Use your plugin manager of choice.
 
 ## Intro
 
-1. Instructions:
+Buffer Mode:
 
-    * TODO
+  * `ListifyOrderBuffer`, to order the whole buffer with **number**
+  * `ListifyUnorderBuffer`, to order the whole buffer with `*`
 
-2. Demo
+Selection (visual) Mode:
+
+  * `ListifyOrderSelection`, to order the selected area with **number**
+  * `ListifyUnorderSelection`, to order the selected area with `*`
+
+## Demos
+
+Demo <TODO>
 
 # Reference
 
