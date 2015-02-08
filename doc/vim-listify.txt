@@ -1,0 +1,25 @@
+*vim-listify.txt* A short multi line description of your plugin
+
+===============================================================================
+CONTENTS                                                          *vim-listify*
+
+    1. Intro .............................................. |vim-listify-intro|
+    2. Requirements ................................ |vim-listify-requirements|
+    3. Usage .............................................. |vim-listify-usage|
+    4. Licence .......................................... |vim-listify-licence|
+===============================================================================
+1. Intro                                                    *vim-listify-intro*
+
+Overview of plugin
+
+2. Requirements                                      *vim-listify-requirements*
+
+What additional programs are required to run the plugin
+
+3. Usage                                                    *vim-listify-usage*
+
+How to use the plugin. What functions does it give the user?
+
+4. Licence                                                *vim-listify-licence*
+
+This is open source make sure to include a licence
