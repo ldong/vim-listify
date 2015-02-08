@@ -36,7 +36,7 @@ Selection (visual) Mode:
 
 ## Demos
 
-Demo <TODO>
+![demo](https://cloud.githubusercontent.com/assets/5491695/6096335/291d505c-af40-11e4-99d4-5667e0a7a482.gif)
 
 # Reference
 
