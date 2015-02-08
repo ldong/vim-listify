@@ -1,3 +1,9 @@
+" Sanity check
+if !has('python')
+    echo "vim_listify.vim Error: Requires Vim compiled with +python"
+    finish
+endif
+
 " --------------------------------
 " Add our plugin to the path
 " --------------------------------
