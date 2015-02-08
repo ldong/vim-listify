@@ -20,3 +20,6 @@ Use your plugin manager of choice.
 
 1. Write a plugin
 2. Write documentation
+
+# Reference
+[Vim Doc](http://vimdoc.sourceforge.net/htmldoc/if_pyth.html#python-buffer)

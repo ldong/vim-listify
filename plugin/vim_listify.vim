@@ -14,49 +14,37 @@ python sys.path.insert(0,parentdir)
 " --------------------------------
 "  Function(s)
 " --------------------------------
-function! ListifyOrder(selection_or_buffer)
+function! Listify(selection_or_buffer, order)
 python << endPython
-
 from vim_listify import *
 
-def get_visual_selection():
-    buf = vim.current.buffer
-    starting_line_num, col1 = buf.mark('<')
-    ending_line_num, col2 = buf.mark('>')
-    return vim.eval('getline({}, {})'.format(starting_line_num, ending_line_num))
-
-def get_correct_buffer(buffer_type):
+def listify(buffer_type, order_type):
     if buffer_type == "buffer":
-        return vim.current.buffer
+        if order_type == 'order':
+            for count in xrange(len(vim.current.buffer)):
+                vim.current.buffer[count] = str(count+1)+'. ' + vim.current.buffer[count] 
+        else:
+            for count in xrange(len(vim.current.buffer)):
+                vim.current.buffer[count] = '*. ' + vim.current.buffer[count] 
     elif buffer_type == "selection":
-        return get_visual_selection()
-
-def listify_buffer_with_order():
-    buf = get_correct_buffer(vim.eval("a:selection_or_buffer"))
-    vim_listify_order_buffer_contents(buf)
-
-def listify_buffer_with_unorder():
-    buf = get_correct_buffer(vim.eval("a:selection_or_buffer"))
-    vim_listify_unorder_buffer_contents(buf)
-
-listify_buffer_with_unorder()
+        buf   = vim.current.buffer # the buffer
+        start = buf.mark('<')[0]-1      # start selection tuple: (1,5)
+        end   = buf.mark('>')[0]      # end selection tuple: (2,7)
+        if order_type == 'order':
+            for count, i in enumerate(range(start, end)):
+                vim.current.buffer[i] = str(count+1)+'. ' + vim.current.buffer[i] 
+        else:
+            for count, i in enumerate(range(start, end)):
+                vim.current.buffer[i] = '* ' + vim.current.buffer[i] 
+listify(vim.eval("a:selection_or_buffer"), vim.eval("a:order"))
 
 endPython
 endfunction
 
-
 " --------------------------------
 "  Expose our commands to the user
 " --------------------------------
-
-
-" --------------------------------
-"  Expose our commands to the user
-" --------------------------------
-
-
-" --------------------------------
-"  Expose our commands to the user
-" --------------------------------
-command! ListifyOrder call ListifyOrder('buffer')
-command! -range ListifyOrder call ListifyOrder('selection')
+command! ListifyOrderBuffer call Listify('buffer', 'order')
+command! -range ListifyOrderSelection call Listify('selection', 'order')
+command! ListifyUnorderBuffer call Listify('buffer', 'unorder')
+command! -range ListifyUnorderSelection call Listify('selection', 'unorder')
